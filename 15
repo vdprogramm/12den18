@@ -1,0 +1,65 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+        byte n = NhapSoNguyen1Byte();
+        Console.WriteLine($"Giá trị nhập vào là: {n}");
+
+        float[] a = new float[n];
+        NhapMangSoThuc(a, n);
+
+        Console.WriteLine("Các giá trị trong mảng là:");
+        foreach (var item in a)
+        {
+            Console.WriteLine(item);
+        }
+    }
+
+    static byte NhapSoNguyen1Byte()
+    {
+        byte n;
+        while (true)
+        {
+            Console.Write("Nhập số nguyên 1 byte (không dấu, từ 2 đến 10): ");
+            if (byte.TryParse(Console.ReadLine(), out n) && n >= 2 && n <= 10)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Giá trị nhập không hợp lệ, vui lòng nhập lại.");
+            }
+        }
+        return n;
+    }
+
+    static float NhapSoThuc4Byte()
+    {
+        float x;
+        while (true)
+        {
+            Console.Write("Nhập số thực 4 byte: ");
+            if (float.TryParse(Console.ReadLine(), out x))
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Giá trị nhập không hợp lệ, vui lòng nhập lại.");
+            }
+        }
+        return x;
+    }
+
+    static void NhapMangSoThuc(float[] a, byte n)
+    {
+        for (byte i = 0; i < n; i++)
+        {
+            a[i] = NhapSoThuc4Byte();
+        }
+    }
+}
