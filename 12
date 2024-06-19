@@ -1,0 +1,42 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+        ushort n = NhapSoNguyen2Byte();
+        Console.WriteLine($"Giá trị nhập vào là: {n}");
+        long tongBinhPhuong = TinhTongBinhPhuong(n);
+        Console.WriteLine($"Tổng bình phương các số từ 1 đến {n} là: {tongBinhPhuong}");
+    }
+
+    static ushort NhapSoNguyen2Byte()
+    {
+        ushort n;
+        while (true)
+        {
+            Console.Write("Nhập số nguyên 2 byte (không dấu): ");
+            if (ushort.TryParse(Console.ReadLine(), out n))
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Giá trị nhập không hợp lệ, vui lòng nhập lại.");
+            }
+        }
+        return n;
+    }
+
+    static long TinhTongBinhPhuong(ushort n)
+    {
+        long tong = 0;
+        for (ushort i = 1; i <= n; i++)
+        {
+            tong += (long)i * i;
+        }
+        return tong;
+    }
+}
