@@ -1,0 +1,30 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+        float x = NhapSoThuc4Byte();
+        Console.WriteLine($"Giá trị nhập vào là: {x}");
+    }
+
+    static float NhapSoThuc4Byte()
+    {
+        float x;
+        while (true)
+        {
+            Console.Write("Nhập số thực 4 byte: ");
+            if (float.TryParse(Console.ReadLine(), out x))
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Giá trị nhập không hợp lệ, vui lòng nhập lại.");
+            }
+        }
+        return x;
+    }
+}
