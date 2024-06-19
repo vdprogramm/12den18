@@ -1,0 +1,51 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+        byte m = NhapSoNguyen1Byte();
+        byte n = NhapSoNguyen1Byte();
+        Console.WriteLine($"Giá trị m: {m}, n: {n}");
+
+        int[,] a = new int[m, n];
+        NhapMang2Chieu(a, m, n);
+
+        Console.WriteLine("Mảng:");
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+                Console.Write($"{a[i, j]} ");
+            Console.WriteLine();
+        }
+
+        Console.WriteLine($"Tổng các phần tử chia hết cho 2024: {TinhTongChiaHetCho(a, m, n, 2024)}");
+    }
+
+    static byte NhapSoNguyen1Byte()
+    {
+        byte n;
+        while (!byte.TryParse(Console.ReadLine(), out n) || n < 2 || n > 10)
+            Console.WriteLine("Nhập lại (2-10):");
+        return n;
+    }
+
+    static void NhapMang2Chieu(int[,] a, byte m, byte n)
+    {
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                while (!int.TryParse(Console.ReadLine(), out a[i, j]))
+                    Console.WriteLine("Nhập lại số nguyên:");
+    }
+
+    static int TinhTongChiaHetCho(int[,] a, byte m, byte n, int p)
+    {
+        int tong = 0;
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                if (a[i, j] % p == 0) tong += a[i, j];
+        return tong;
+    }
+}
