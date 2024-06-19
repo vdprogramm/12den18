@@ -1,0 +1,20 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+        double x = NhapSoThuc8Byte();
+        Console.WriteLine($"Căn bậc 2 của {x}: {Math.Sqrt(x)}");
+    }
+
+    static double NhapSoThuc8Byte()
+    {
+        double x;
+        while (!double.TryParse(Console.ReadLine(), out x))
+            Console.WriteLine("Nhập lại số thực 8 byte:");
+        return x;
+    }
+}
