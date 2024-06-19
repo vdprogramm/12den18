@@ -1,0 +1,22 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+        Console.Write("Nhập xâu kí tự: ");
+        string st = Console.ReadLine();
+
+        if (st == "#")
+            Console.Beep();
+        else
+            Console.WriteLine($"Số từ trong xâu: {DemSoTu(st)}");
+    }
+
+    static int DemSoTu(string st)
+    {
+        return string.IsNullOrWhiteSpace(st) ? 0 : st.Split(new char[] { ' ', '.', '!', '?', ',', ';', ':', '-' }, StringSplitOptions.RemoveEmptyEntries).Length;
+    }
+}
