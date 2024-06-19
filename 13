@@ -1,0 +1,30 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+        byte n = NhapSoNguyen1Byte();
+        Console.WriteLine($"Giá trị nhập vào là: {n}");
+    }
+
+    static byte NhapSoNguyen1Byte()
+    {
+        byte n;
+        while (true)
+        {
+            Console.Write("Nhập số nguyên 1 byte (không dấu, từ 2 đến 10): ");
+            if (byte.TryParse(Console.ReadLine(), out n) && n >= 2 && n <= 10)
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Giá trị nhập không hợp lệ, vui lòng nhập lại.");
+            }
+        }
+        return n;
+    }
+}
